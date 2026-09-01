@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mirelly &amp; Lucas — 10 . 01 . 2027</title>
+<meta name="description" content="Convite de casamento de Mirelly e Lucas — 10 de janeiro de 2027, Chácara Florestal, São Paulo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="site-header">
+    <a href="#inicio" class="logo">M<span class="logo-sep">|</span>L</a>
+    <div class="lang-switch">
+      <button type="button" id="btn-pt" class="lang-btn active">PT</button>
+      <span class="slash">/</span>
+      <button type="button" id="btn-en" class="lang-btn">EN</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <div class="hero-frame">
+      <div class="hero-monogram">M<span class="logo-sep">|</span>L</div>
+      <div class="hero-names">
+        <div class="hero-name-first">Mirelly</div>
+        <div class="hero-name-second"><span class="hero-amp lang-pt">e</span><span class="hero-amp lang-en">and</span>Lucas</div>
+      </div>
+      <p class="hero-tagline lang-pt">Convidam para a celebração do seu casamento</p>
+      <p class="hero-tagline lang-en">Invite you to celebrate their wedding</p>
+      <div class="divider"></div>
+      <p class="hero-date lang-pt">10 de janeiro de 2027, às 16h</p>
+      <p class="hero-date lang-en">January 10, 2027 · 4 pm</p>
+      <p class="hero-venue">Chácara Florestal &nbsp;|&nbsp; São Paulo — SP</p>
+      <nav class="hero-nav">
+        <a href="#local" class="nav-item">
+          <span class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3.8-6-7-6-10a6 6 0 1 1 12 0c0 3-2 6.2-6 10z"></path><circle cx="12" cy="11" r="2.3"></circle></svg></span>
+          <span class="nav-label lang-pt">Localização</span><span class="nav-label lang-en">Location</span>
+        </a>
+        <a href="#presentes" class="nav-item">
+          <span class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5h15v8h-15z"></path><path d="M3.5 8.5h17v4h-17z"></path><path d="M12 8.5v12"></path><path d="M12 8.5C10.5 5.5 6 5.5 6 7.5s4 1 6 1z"></path><path d="M12 8.5c1.5-3 6-3 6-1s-4 1-6 1z"></path></svg></span>
+          <span class="nav-label lang-pt">Presentes</span><span class="nav-label lang-en">Gifts</span>
+        </a>
+        <a href="#traje" class="nav-item">
+          <span class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7.5a2.5 2.5 0 1 0-2.5-2.5"></path><path d="M12 7.5 3.8 13.6a1.3 1.3 0 0 0 0.8 2.4h14.8a1.3 1.3 0 0 0 0.8-2.4L12 7.5z"></path></svg></span>
+          <span class="nav-label lang-pt">Trajes</span><span class="nav-label lang-en">Dress code</span>
+        </a>
+        <a href="#rsvp" class="nav-item">
+          <span class="nav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="m8.5 12.3 2.4 2.4 4.6-5.4"></path></svg></span>
+          <span class="nav-label lang-pt">Confirme</span><span class="nav-label lang-en">RSVP</span>
+        </a>
+      </nav>
+      <img src="assets/ceremony-sketch.png" alt="Sketch da cerimônia ao ar livre" class="hero-sketch">
+    </div>
+  </section>
+
+  <!-- Contagem regressiva -->
+  <section class="countdown">
+    <p class="countdown-title lang-pt">Contagem regressiva</p>
+    <p class="countdown-title lang-en">Counting down</p>
+    <div class="countdown-grid">
+      <div class="cd-unit cd-days">
+        <div class="cd-value" id="cd-days">—</div>
+        <div class="cd-label lang-pt">Dias</div><div class="cd-label lang-en">Days</div>
+      </div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit">
+        <div class="cd-value" id="cd-hours">—</div>
+        <div class="cd-label lang-pt">Horas</div><div class="cd-label lang-en">Hours</div>
+      </div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit">
+        <div class="cd-value" id="cd-minutes">—</div>
+        <div class="cd-label lang-pt">Min</div><div class="cd-label lang-en">Min</div>
+      </div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit">
+        <div class="cd-value" id="cd-seconds">—</div>
+        <div class="cd-label lang-pt">Seg</div><div class="cd-label lang-en">Sec</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cerimônia & recepção -->
+  <section id="local" class="venue">
+    <div class="venue-header">
+      <p class="section-kicker lang-pt">Cerimônia &amp; recepção</p>
+      <p class="section-kicker lang-en">Ceremony &amp; reception</p>
+    </div>
+    <div class="venue-card">
+      <img src="assets/venue.webp" alt="Chácara Florestal" class="venue-photo">
+      <p class="venue-name">Chácara Florestal</p>
+      <p class="venue-address">Estrada Florestal, 650 — Parelheiros<br>Parque Florestal, São Paulo — SP, 01000-999</p>
+      <div class="divider"></div>
+      <p class="venue-note lang-pt">Cerimônia às 16h, seguida de recepção<br>no mesmo local.</p>
+      <p class="venue-note lang-en">Ceremony at 4 pm, followed by the reception<br>at the same venue.</p>
+      <a href="https://maps.app.goo.gl/L81L3up8Kb1vSAAV8" target="_blank" rel="noopener" class="btn-outline">
+        <span class="lang-pt">Ver no mapa</span><span class="lang-en">View map</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Trajes -->
+  <section id="traje" class="dress">
+    <p class="section-kicker lang-pt">Sugestão de trajes</p>
+    <p class="section-kicker lang-en">Dress code</p>
+    <p class="script-title lang-pt">Esporte fino</p>
+    <p class="script-title lang-en">Semi-formal</p>
+    <p class="dress-note lang-pt">Pedimos gentilmente que reservem o branco para a noiva.</p>
+    <p class="dress-note lang-en">We kindly ask that you reserve white for the bride.</p>
+  </section>
+
+  <!-- Lista de presentes -->
+  <section id="presentes" class="gifts">
+    <div class="gifts-card">
+      <p class="section-kicker lang-pt">Lista de presentes</p>
+      <p class="section-kicker lang-en">Gift list</p>
+      <p class="gifts-note lang-pt">Sua presença é o nosso maior presente. Se quiser nos mimar, montamos uma lista com muito carinho.</p>
+      <p class="gifts-note lang-en">Your presence is our greatest gift. If you'd like to spoil us, we've put together a list with love.</p>
+      <a href="https://noivos.casar.com/lucas-e-mirelly" target="_blank" rel="noopener" class="btn-solid">
+        <span class="lang-pt">Acessar a lista</span><span class="lang-en">Open the list</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" class="rsvp">
+    <p class="section-kicker lang-pt">Confirme sua presença</p>
+    <p class="section-kicker lang-en">RSVP</p>
+    <p class="rsvp-deadline lang-pt">Por favor, confirme até 10 de dezembro de 2026.</p>
+    <p class="rsvp-deadline lang-en">Please reply by December 10, 2026.</p>
+
+    <form id="rsvp-form" class="rsvp-form">
+      <label class="field">
+        <span class="field-label lang-pt">Nome completo</span><span class="field-label lang-en">Full name</span>
+        <input type="text" name="name" required class="field-input">
+      </label>
+      <div class="choice-group">
+        <button type="button" id="choice-yes" class="choice selected">
+          <span class="choice-dot"><span class="choice-dot-inner"></span></span>
+          <span class="lang-pt">Sim, estarei lá!</span><span class="lang-en">Yes, I'll be there!</span>
+        </button>
+        <button type="button" id="choice-no" class="choice">
+          <span class="choice-dot"><span class="choice-dot-inner"></span></span>
+          <span class="lang-pt">Infelizmente não poderei ir</span><span class="lang-en">Sadly, I can't make it</span>
+        </button>
+      </div>
+      <label class="field">
+        <span class="field-label lang-pt">Mensagem (opcional)</span><span class="field-label lang-en">Message (optional)</span>
+        <textarea name="note" rows="3" class="field-input"></textarea>
+      </label>
+      <button type="submit" class="btn-solid">
+        <span class="lang-pt">Enviar confirmação</span><span class="lang-en">Send RSVP</span>
+      </button>
+    </form>
+
+    <div id="rsvp-confirmation" class="rsvp-confirmation hidden">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="m8.5 12.3 2.4 2.4 4.6-5.4"></path></svg>
+      <div id="msg-yes">
+        <div class="lang-pt"><p class="rsvp-confirmation-title">Presença confirmada!</p><p class="rsvp-confirmation-note">Mal podemos esperar para celebrar com você.</p></div>
+        <div class="lang-en"><p class="rsvp-confirmation-title">You're confirmed!</p><p class="rsvp-confirmation-note">We can't wait to celebrate with you.</p></div>
+      </div>
+      <div id="msg-no" class="hidden">
+        <div class="lang-pt"><p class="rsvp-confirmation-title">Resposta recebida</p><p class="rsvp-confirmation-note">Sentiremos sua falta — obrigado por avisar.</p></div>
+        <div class="lang-en"><p class="rsvp-confirmation-title">Reply received</p><p class="rsvp-confirmation-note">We'll miss you — thank you for letting us know.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-names">Mirelly &amp; Lucas</div>
+    <p class="footer-date">10 . 01 . 2027</p>
+    <div class="divider"></div>
+  </footer>
+
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
