@@ -26,8 +26,3 @@ wedding invite/
 2. In the repository, go to **Settings → Pages**.
 3. In **Source**, choose **Deploy from a branch**, branch `main`, folder `/ (root)` and save.
 4. The site will be available at `https://YOUR-USERNAME.github.io/YOUR-REPO/`.
-
-## Notes
-
-- The RSVP form displays confirmation only on the screen — it **does not send data to any server** (same behavior as the original project). To receive responses, connect it to a service like Formspree or Google Forms.
-- The gift list points to `https://noivos.casar.com/lucas-e-mirelly` and the map to Google Maps — edit the links in `index.html` if needed.
