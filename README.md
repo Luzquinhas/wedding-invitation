@@ -1,33 +1,33 @@
-# Mirelly & Lucas — Convite de casamento
+# Mirelly & Lucas — Wedding Invitation
 
-Site estático do convite de casamento, pronto para publicar no GitHub Pages.
+Static wedding invitation website, ready to publish on GitHub Pages.
 
-## Estrutura
+## Structure
 
 ```
 wedding invite/
-├── index.html      # Página do convite (PT/EN)
-├── css/style.css   # Estilos
-├── js/main.js      # Idioma, contagem regressiva e RSVP
+├── index.html      # Invitation page (PT/EN)
+├── css/style.css   # Styles
+├── js/main.js      # Language, countdown and RSVP
 └── assets/
-    ├── ceremony-sketch.png   # Ilustração da cerimônia (hero)
-    └── venue.webp            # Foto do local (Chácara Florestal)
+    ├── ceremony-sketch.png   # Ceremony illustration (hero)
+    └── venue.webp            # Venue photo (Chácara Florestal)
 ```
 
-## Publicar no GitHub Pages
+## Publishing to GitHub Pages
 
-1. Crie um repositório no GitHub e envie estes arquivos para a branch `main`:
+1. Create a GitHub repository and push these files to the `main` branch:
 
    ```bash
-   git remote add origin https://github.com/SEU-USUARIO/SEU-REPO.git
+   git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
    git push -u origin main
    ```
 
-2. No repositório, vá em **Settings → Pages**.
-3. Em **Source**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)` e salve.
-4. O site ficará disponível em `https://SEU-USUARIO.github.io/SEU-REPO/`.
+2. In the repository, go to **Settings → Pages**.
+3. In **Source**, choose **Deploy from a branch**, branch `main`, folder `/ (root)` and save.
+4. The site will be available at `https://YOUR-USERNAME.github.io/YOUR-REPO/`.
 
-## Observações
+## Notes
 
-- O formulário de RSVP mostra apenas a confirmação na tela — ele **não envia os dados para nenhum servidor** (mesmo comportamento do projeto original). Para receber as respostas, conecte-o a um serviço como Formspree ou Google Forms.
-- A lista de presentes aponta para `https://noivos.casar.com/lucas-e-mirelly` e o mapa para o Google Maps — edite os links em `index.html` se precisar.
+- The RSVP form displays confirmation only on the screen — it **does not send data to any server** (same behavior as the original project). To receive responses, connect it to a service like Formspree or Google Forms.
+- The gift list points to `https://noivos.casar.com/lucas-e-mirelly` and the map to Google Maps — edit the links in `index.html` if needed.
