@@ -1,4 +1,4 @@
-/* Lucas & Mirelly — convite de casamento
+/* Lucas & Mirelly — convite de casamento (index.html e padrinhos.html)
    Idioma (PT/EN), contagem regressiva e formulário de RSVP. */
 
 (function () {
@@ -37,8 +37,11 @@
     elSeconds.textContent = pad(Math.floor((diff % 6e4) / 1e3));
   }
 
-  tick();
-  setInterval(tick, 1000);
+  /* padrinhos.html não tem contagem regressiva */
+  if (elDays) {
+    tick();
+    setInterval(tick, 1000);
+  }
 
   /* --- RSVP --- */
   var form = document.getElementById('rsvp-form');
@@ -55,14 +58,17 @@
     choiceNo.classList.toggle('selected', value === 'no');
   }
 
-  choiceYes.addEventListener('click', function () { setAttending('yes'); });
-  choiceNo.addEventListener('click', function () { setAttending('no'); });
+  /* padrinhos.html não tem formulário de RSVP */
+  if (form) {
+    choiceYes.addEventListener('click', function () { setAttending('yes'); });
+    choiceNo.addEventListener('click', function () { setAttending('no'); });
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    msgYes.classList.toggle('hidden', attending !== 'yes');
-    msgNo.classList.toggle('hidden', attending !== 'no');
-    form.classList.add('hidden');
-    confirmation.classList.remove('hidden');
-  });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      msgYes.classList.toggle('hidden', attending !== 'yes');
+      msgNo.classList.toggle('hidden', attending !== 'no');
+      form.classList.add('hidden');
+      confirmation.classList.remove('hidden');
+    });
+  }
 })();

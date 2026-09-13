@@ -5,9 +5,10 @@ Purpose: everything an agent needs to edit this site on-style without re-reading
 ## Stack & files
 
 - Static site, no build, no deps, no framework, no tests. Deployed as-is to GitHub Pages (`main`, root).
-- `index.html` (183 lines) — single page, all copy in PT + EN.
-- `css/style.css` (603 lines) — one file, sections in DOM order, banner comments `/* --- Nome --- */` in Portuguese.
-- `js/main.js` (68 lines) — language switch, countdown, RSVP.
+- `index.html` (183 lines) — the invitation, all copy in PT + EN.
+- `padrinhos.html` (105 lines) — groomsmen & bridesmaids guide (two dress codes + instructions). Copies the header/hero/footer markup of `index.html` verbatim (no templating: edit both files when changing them). **Not linked from `index.html`**; the couple shares the URL directly. See "padrinhos.html" under DOM order.
+- `css/style.css` (660 lines) — one file shared by both pages, sections in DOM order of `index.html`; the `padrinhos.html`-only block `/* --- Manual dos padrinhos (padrinhos.html) --- */` sits right after Trajes. Banner comments `/* --- Nome --- */` in Portuguese.
+- `js/main.js` (74 lines) — language switch, countdown, RSVP; shared by both pages, countdown and RSVP blocks are guarded (see JavaScript).
 - `assets/ceremony-sketch.png` (2.5 MB, hero illustration), `assets/venue.webp` (~200 KB, venue photo).
 - Code comments: Portuguese. README/AGENTS: English. Hex colors uppercase. 2-space indent.
 
@@ -34,7 +35,20 @@ Purpose: everything an agent needs to edit this site on-style without re-reading
 
 Hero nav order is `#local → #presentes → #traje → #rsvp`, which differs from DOM order (dress before gifts). Intentional.
 
-Section paddings: hero `28px 20px 56px` · countdown `44px 24px` · venue `56px 24px 64px` · dress `0 28px 64px` · gifts `0 24px 72px` · rsvp `60px 28px 72px` · footer `56px 24px 44px`.
+Section paddings: hero `28px 20px 56px` · countdown `44px 24px` · venue `56px 24px 64px` · dress `0 28px 64px` · gifts `0 24px 72px` · rsvp `60px 28px 72px` · instructions `0 24px 72px` · footer `56px 24px 44px`.
+
+### padrinhos.html
+
+| # | id | class | notes |
+|---|----|-------|-------|
+| 0 | — | `.site-header` | identical to `index.html`, except `.logo` links to `index.html` |
+| 1 | `inicio` | `.hero` | same `.hero-frame`, names, date, venue, `.hero-sketch`. Tagline "Manual dos padrinhos e madrinhas" / "Guide for groomsmen &amp; bridesmaids". `.hero-nav`: `#padrinhos` (tie icon) → `#madrinhas` (dress icon) → `#instrucoes` (clock icon), labels Padrinhos/Groomsmen · Madrinhas/Bridesmaids · Instruções/Instructions |
+| 2 | `padrinhos` | `.dress` | kicker "Traje dos padrinhos" / "Groomsmen dress code" + `.script-title` "Cinza gelo" / "Ice grey" + `.dress-note` + `.swatches` (`.swatch-ink` + `.swatch-ice`) |
+| 3 | `madrinhas` | `.dress` | kicker "Traje das madrinhas" / "Bridesmaids dress code" + `.script-title` "Rosa" / "Pink" + `.dress-note` + `.swatches` (`.swatch-blush` + `.swatch-pink`) |
+| 4 | `instrucoes` | `.instructions` | `.instructions-card` → kicker "Instruções" / "Instructions" + `.instructions-note` + `.divider` + `.instructions-note` |
+| 5 | — | `.site-footer` | identical |
+
+No countdown and no RSVP on this page. The `.dress`, `.script-title` and `.dress-note` rules are reused as-is (they are the dress-code component); only `.swatches` and `.instructions*` are new.
 
 ## Bilingual pattern (PT default)
 
@@ -62,9 +76,11 @@ Section paddings: hero `28px 20px 56px` · countdown `44px 24px` · venue `56px 
 | `#5F584A` | `.section-kicker`, `.hero-amp` |
 | `#494336` | `a:hover`, `.venue-address`, `.dress-note`, `.rsvp-deadline`, `.rsvp-confirmation-note`, `.footer-date` |
 | `#37322A` | `.hero-tagline`, `.hero-venue`, `.venue-note`, `.field-label` |
-| `#3D372E` | `.btn-solid:hover` bg, `.gifts-note` |
+| `#3D372E` | `.btn-solid:hover` bg, `.gifts-note`, `.instructions-note` |
 
 Pick from this table; do not introduce new hex values without a reason.
+
+Garment colors (`padrinhos.html` swatches only — they depict real fabric colors, never use them for UI): `.swatch-ink` reuses `#171410` · `.swatch-ice` `#D6D6D6` (cinza gelo) · `.swatch-blush` `#F9C9E4` (rosa claro) · `.swatch-pink` `#F45FB4` (rosa).
 
 ## Typography
 
@@ -80,7 +96,7 @@ Pick from this table; do not introduce new hex values without a reason.
 | date | `.hero-date` | 19px | 0.1em | 600 | uppercase |
 | heading | `.venue-name` / `.rsvp-confirmation-title` | 26px / 20px | — | 600 | |
 | note | `.venue-note` `.dress-note` `.rsvp-deadline` `.rsvp-confirmation-note` | 15px | — | 500 | italic, `#494336` (`.venue-note`: `#37322A`) |
-| note (gifts) | `.gifts-note` | 16px | — | 400 (unset) | italic, `#3D372E`; like `.dress-note`: `line-height: 1.6; max-width: 300px; margin: … auto 0` |
+| note (gifts) | `.gifts-note` / `.instructions-note` | 16px | — | 400 (unset) | italic, `#3D372E`; like `.dress-note`: `line-height: 1.6; max-width: 300px; margin: 20px auto 0` (identical rules, one per section) |
 | number | `.cd-value` | 36px | — | 500 | `tabular-nums` |
 | monogram | `.hero-monogram` / `.logo` | 30px / 16px | 0.22em / 0.14em | 500 / 600 | `.logo-sep` weight 400 (300 in hero), `padding: 0 5px` (8px in hero) |
 | footer date | `.footer-date` | 12px | 0.3em | 500 | `#494336` |
@@ -90,12 +106,13 @@ Hero names (`.hero-names`, `max-width: 290px`) are hand-positioned: `.hero-name-
 
 ## Components (copy these, do not invent variants)
 
-- **Divider** `.divider`: `width: 44px; height: 1px; background: #CFC7B1; margin: 26px auto`. Overrides: `.venue-card .divider` 36px / `22px auto`; `.site-footer .divider` 36px / `24px auto 0`.
+- **Divider** `.divider`: `width: 44px; height: 1px; background: #CFC7B1; margin: 26px auto`. Overrides: `.venue-card .divider` 36px / `22px auto`; `.site-footer .divider` 36px / `24px auto 0`; `.instructions-card .divider` 36px / `24px auto 4px`.
 - **Buttons**: pill, `font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-radius: 100px; display: inline-block`. Work as `<a>` or `<button>`.
   - `.btn-outline`: `padding: 13px 30px; border: 1px solid #171410; margin-top: 24px; transition: background 0.2s, color 0.2s`; hover → bg `#171410`, color `#F1EDE1`.
   - `.btn-solid`: `padding: 14px 34px; background: #171410; color: #F1EDE1; border: 0; margin-top: 26px; cursor: pointer; transition: background 0.2s`; hover → `#3D372E`. Inside `.rsvp-form`: `margin-top: 6px; padding: 16px 34px`.
-- **Cards**: `border: 1px solid`, centered text, white or transparent bg, no radius. `.hero-frame` (`#CFC7B1`, `52px 22px 0`, `animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) both`) · `.venue-card` (`#DFD9C9`, `14px 14px 30px`) · `.gifts-card` (`#CFC7B1`, `40px 26px`) · `.rsvp-confirmation` (`#CFC7B1`, `38px 26px`, `margin-top: 40px`).
-- **Nav item** `.nav-item` (flex column, `gap: 9px; width: 76px`) → `.nav-icon` 58px circle `border: 1px solid #171410` → inline SVG `width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"` → `.nav-label` ×2 langs. `.hero-nav { display: flex; justify-content: center; gap: 20px; margin-top: 44px }`. Icons are hand-drawn paths, not an icon font. The check icon in `#rsvp-confirmation` reuses the same attributes at `width="30" height="30"`.
+- **Cards**: `border: 1px solid`, centered text, white or transparent bg, no radius. `.hero-frame` (`#CFC7B1`, `52px 22px 0`, `animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) both`) · `.venue-card` (`#DFD9C9`, `14px 14px 30px`) · `.gifts-card` / `.instructions-card` (`#CFC7B1`, `40px 26px`) · `.rsvp-confirmation` (`#CFC7B1`, `38px 26px`, `margin-top: 40px`).
+- **Swatches** (`padrinhos.html`): `<div class="swatches" aria-hidden="true">` (`display: flex; justify-content: center; margin-top: 28px`) with two `<span class="swatch swatch-x">` — 56px circles, `.swatch + .swatch { margin-left: -14px }` so the second overlaps the first. Modifiers `.swatch-ink` `.swatch-ice` `.swatch-blush` `.swatch-pink` set `background` only. No border, no text; the color is named in the `.script-title`/`.dress-note` next to it.
+- **Nav item** `.nav-item` (flex column, `gap: 9px; width: 76px`) → `.nav-icon` 58px circle `border: 1px solid #171410` → inline SVG `width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"` → `.nav-label` ×2 langs. `.hero-nav { display: flex; justify-content: center; gap: 20px; margin-top: 44px }`. Icons are hand-drawn paths, not an icon font (`index.html`: pin, gift, hanger, check; `padrinhos.html`: tie, dress, clock). The check icon in `#rsvp-confirmation` reuses the same attributes at `width="30" height="30"`. Long single-word labels ("Localização", "Instructions") overflow the 76px item symmetrically; accepted.
 - **Lang switch** `.lang-switch` (flex, 13px, `letter-spacing: 0.12em`): `.lang-btn` unstyled button `opacity: 0.5`; `.lang-btn.active` → `opacity: 1; font-weight: 600; text-decoration: underline; text-underline-offset: 4px`. Separator `.slash` `#B3AA94`.
 - **Form** `.rsvp-form { margin-top: 36px; text-align: left; display: flex; flex-direction: column; gap: 26px }`.
 - **Form field** `<label class="field">` (flex column, `gap: 8px`) wrapping `.field-label` ×2 langs + `.field-input`. `.field-input`: `appearance: none; background: transparent; border: 0; border-bottom: 1px solid #BEB6A0; padding: 8px 2px; font-size: 17px; outline: none; border-radius: 0`; focus → underline `#171410`. `textarea.field-input { resize: vertical }`.
@@ -109,6 +126,7 @@ Hero names (`.hero-names`, `max-width: 290px`) are hand-positioned: `.hero-name-
 
 - One IIFE, `'use strict'`, `var` only, ES5 style (only newer API: `String.prototype.padStart`). No modules, no deps, no event delegation. Loaded with `<script src="js/main.js">` at end of `<body>`, no `defer`.
 - DOM access **only via `getElementById`**; state changes only via `classList.toggle/add/remove`. ids are JS hooks + anchors; classes are for CSS. Keep that split.
+- The same script runs on `index.html` and `padrinhos.html`. Language switch is unguarded (both pages have `#btn-pt`/`#btn-en`); countdown runs only inside `if (elDays) { … }` and RSVP listeners attach only inside `if (form) { … }`, because `padrinhos.html` has neither. Guard any new feature the same way unless it exists on both pages.
 - Countdown: `TARGET = new Date('2027-01-10T16:00:00-03:00').getTime()`; `tick()` runs once then `setInterval(tick, 1000)`; `diff = Math.max(0, TARGET - Date.now())` (stops at 0, no "married" state); days unpadded, h/m/s `pad()` to 2 digits. HTML placeholders are `—`.
 - RSVP: **no backend.** `#rsvp-form` has `input[name=name]` (required) and `textarea[name=note]`. Attendance is a `var attending = 'yes'` toggled by `#choice-yes` / `#choice-no` (`.selected`). On submit: `preventDefault`, toggle `.hidden` on `#msg-yes` / `#msg-no`, add `.hidden` to the form, remove it from `#rsvp-confirmation`. Nothing is sent or stored. To wire a service, add a `fetch` inside the submit handler before the class toggles and read `attending`, `form.elements.name.value`, `form.elements.note.value` (not `form.name`, which is the form's own `name` attribute).
 
@@ -116,15 +134,18 @@ Hero names (`.hero-names`, `max-width: 290px`) are hand-positioned: `.hero-name-
 
 | fact | value | where |
 |------|-------|-------|
-| couple | Mirelly & Lucas (Mirelly first everywhere; JS/CSS headers say "Lucas & Mirelly") | hero, footer, `<title>` |
-| date/time | 10 Jan 2027, 16h (Brasília, UTC−3) | `<title>` "10 . 01 . 2027", meta description, `.hero-date` ×2, `.footer-date`, `.venue-note` ×2, JS `TARGET` |
-| venue | Chácara Florestal, Estrada Florestal, 650 — Parelheiros, Parque Florestal, São Paulo — SP, 01000-999 | `.hero-venue`, `.venue-name`, `.venue-address` |
+| couple | Mirelly & Lucas (Mirelly first everywhere; JS/CSS headers say "Lucas & Mirelly") | hero, footer, `<title>` (both pages) |
+| date/time | 10 Jan 2027, 16h (Brasília, UTC−3) | `<title>` "10 . 01 . 2027", meta description, `.hero-date` ×2, `.footer-date`, `.venue-note` ×2, JS `TARGET`; plus `.hero-date` ×2, `.footer-date` and meta description in `padrinhos.html` |
+| venue | Chácara Florestal, Estrada Florestal, 650 — Parelheiros, Parque Florestal, São Paulo — SP, 01000-999 | `.hero-venue` (both pages), `.venue-name`, `.venue-address` |
 | map | `https://maps.app.goo.gl/L81L3up8Kb1vSAAV8` | `.btn-outline` in venue |
 | gift list | `https://noivos.casar.com/lucas-e-mirelly` | `.btn-solid` in gifts |
-| dress code | "Esporte fino" / "Semi-formal"; reserve white for the bride | `.script-title`, `.dress-note` |
+| dress code (guests) | "Esporte fino" / "Semi-formal"; reserve white for the bride | `.script-title`, `.dress-note` |
+| dress code (groomsmen) | white shirt, trousers, jacket, tie and suspenders in "cinza gelo" / ice grey | `padrinhos.html` `#padrinhos` |
+| dress code (bridesmaids) | long dress in "rosa" / pink, comfortable, flattering | `padrinhos.html` `#madrinhas` |
+| groomsmen/bridesmaids instructions | arrive 30 min before the ceremony; have fun, take lots of photos | `padrinhos.html` `#instrucoes` |
 | RSVP deadline | 10 Dec 2026 | `.rsvp-deadline` ×2 |
 
-External links use `target="_blank" rel="noopener"`. Changing the date means touching all six places listed above.
+External links use `target="_blank" rel="noopener"`. Changing the date means touching all six places listed above in `index.html`/`main.js` plus the four in `padrinhos.html`.
 
 ## Recipes
 
@@ -132,6 +153,7 @@ External links use `target="_blank" rel="noopener"`. Changing the date means tou
 - **New section**: `<section id="x" class="x">` placed in DOM order, `scroll-margin-top: 64px`, `.section-kicker` ×2 langs first, optional `.divider`, buttons from the table above. Add a CSS block with the `/* --- Nome --- */` banner. Add a `.nav-item` with a 22px stroke SVG if it needs a hero shortcut.
 - **New color/size**: reuse the palette/type tables. If truly new, add it to this file.
 - **Replace an image**: keep `.hero-sketch` white-background PNG (multiply blend) or switch to a transparent PNG and drop `mix-blend-mode`; venue photo is cropped to 210px tall.
+- **Edit the guide (`padrinhos.html`)**: dress-code sections are plain `.dress` sections; to change a garment color, edit the `.swatch-x` background in the padrinhos CSS block and the color name in `.script-title` ×2. Header/hero/footer changes made in `index.html` must be mirrored by hand.
 
 ## Current limitations (intentional or accepted — do not "fix" uninvited)
 
@@ -140,3 +162,4 @@ External links use `target="_blank" rel="noopener"`. Changing the date means tou
 - `alt` texts and `<title>`/meta description are PT only.
 - `ceremony-sketch.png` is 2.5 MB and unoptimized.
 - Countdown shows `0 00 00 00` after the event.
+- `padrinhos.html` duplicates header/hero/footer markup (no templating), is not linked from the invitation and is not `noindex`ed.

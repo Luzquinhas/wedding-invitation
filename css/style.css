@@ -425,6 +425,64 @@ html[data-lang="en"] .lang-pt {
   line-height: 1.6;
 }
 
+/* --- Manual dos padrinhos (padrinhos.html) --------------------------- */
+.swatches {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.swatch {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+
+.swatch + .swatch {
+  margin-left: -14px;
+}
+
+.swatch-ink {
+  background: #171410;
+}
+
+.swatch-ice {
+  background: #D6D6D6;
+}
+
+.swatch-blush {
+  background: #F9C9E4;
+}
+
+.swatch-pink {
+  background: #F45FB4;
+}
+
+.instructions {
+  padding: 0 24px 72px;
+  scroll-margin-top: 64px;
+}
+
+.instructions-card {
+  border: 1px solid #CFC7B1;
+  padding: 40px 26px;
+  text-align: center;
+}
+
+.instructions-note {
+  margin: 20px auto 0;
+  max-width: 300px;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #3D372E;
+}
+
+.instructions-card .divider {
+  width: 36px;
+  margin: 24px auto 4px;
+}
+
 /* --- Lista de presentes ------------------------------------------------ */
 .gifts {
   padding: 0 24px 72px;

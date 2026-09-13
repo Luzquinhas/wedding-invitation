@@ -7,6 +7,7 @@ Static wedding invitation website, ready to publish on GitHub Pages.
 ```
 wedding invite/
 ├── index.html      # Invitation page (PT/EN)
+├── padrinhos.html  # Groomsmen & bridesmaids guide (PT/EN), not linked from the invitation
 ├── css/style.css   # Styles
 ├── js/main.js      # Language, countdown and RSVP
 └── assets/
